@@ -1,0 +1,76 @@
+{
+  "container": [
+    {
+      "id": "23567890098765",
+      "names": ["rdv"],
+      "config": {
+        "HostName": "soc1"
+      },
+      "annotation": {
+        "piccolo.package.name": "bms"
+      }
+    },
+
+    {
+      "id": "23567890098765",
+      "names": ["blis"],
+      "config": {
+        "HostName": "soc1"
+      },
+      "annotation": {
+        "piccolo.package.name": "bms"
+      }
+    },
+    {
+      "id": "23567890098765",
+      "names": ["piccolo-state"],
+      "config": {
+        "HostName": "soc0"
+      },
+      "annotation": {
+        "piccolo.package.name": "piccolo"
+      }
+    },
+    {
+      "id": "23567890098765",
+      "names": ["mavd"],
+      "config": {
+        "HostName": "soc1"
+      },
+      "annotation": {
+        "piccolo.package.name": "bms"
+      }
+    },
+    {
+      "id": "23567890098765",
+      "names": ["frism"],
+      "config": {
+        "HostName": "soc1"
+      },
+      "annotation": {
+        "piccolo.package.name": "bms"
+      }
+    },
+
+    {
+      "id": "23567890098765",
+      "names": ["piccolo-gateway"],
+      "config": {
+        "HostName": "soc0"
+      },
+      "annotation": {
+        "piccolo.package.name": "headlight"
+      }
+    },
+    {
+      "id": "23567890098765",
+      "names": ["piccolo-state-gateway"],
+      "config": {
+        "HostName": "soc1"
+      },
+      "annotation": {
+        "piccolo.package.name": "piccolo"
+      }
+    }
+  ]
+}
