@@ -141,7 +141,43 @@
               <aside
                 class="xl:mt-6 1xl:mt-5 2xl:mt-1 3xl:mt-[50px] 3xl:ml-[px]"
               >
-                <div
+                <!-- <div
+                  v-for="containerNames in filteredDrivingDatas"
+                  :key="containerNames"
+                >
+                  <div v-for="container in containerNames" :key="container">
+                    {{ container }}
+                  </div>
+                </div> -->
+
+                <div v-for="card in cards" :key="card">
+                  {{ card.name }}
+                </div>
+
+                <!-- <div
+                  v-for="host in filteredDrivingDatas"
+                  :key="host"
+                  class="flex gap-2 items-end justify-center"
+                >
+                  <div
+                    v-for="drivingData in filteredDrivingDatas"
+                    :key="drivingData"
+                  >
+                    <div v-if="drivingData.components">
+                      <div v-for="name in ParkingData" :key="name">
+                        {{ name }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div v-for="hostname in host.components" :key="hostname">
+                    <div class="bg-blue-400 px-3 py-2">
+                      {{ hostname.system }}
+                    </div>
+                  </div>
+                </div> -->
+
+                <!-- <div
                   class="bg-red-00 ml-[80px] xl:ml-[100px] 1xl:ml-[60px] 2xl:ml-[73px] 3xl:ml-[100px] mb-1"
                 >
                   <div
@@ -201,7 +237,7 @@
                       <p class="">ZONAL</p>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </aside>
             </div>
 
@@ -383,6 +419,7 @@ const navigateToNewcomponent = () => {
 };
 
 const togglePiccoloScenario = () => {
+  initialiationMethod();
   showPiccoloScenario.value = !showPiccoloScenario.value;
 };
 
@@ -426,10 +463,55 @@ const unselectSection = () => {
   showArrow.value = false;
 };
 
+let cards = ref([
+  {
+    name: "driving",
+    components: [
+      { system: "soc0", containers: ["rdv", "mavd", "frism", "blis"] },
+      { system: "soc1", containers: [] },
+      { system: "zonal", containers: [] },
+    ],
+  },
+  {
+    name: "parking",
+    components: [
+      { system: "soc0", containers: ["blis"] },
+      { system: "soc1", containers: [] },
+      { system: "zonal", containers: ["frism"] },
+    ],
+  },
+]);
+
+const filteredDrivingDatas = cards.value.filter((element) => {
+  return element.name == "driving";
+});
+console.log("filteredDrivingDatas", filteredDrivingDatas);
+
+const filteredParkingDatas = cards.value.filter((element) => {
+  return element.name == "parking";
+});
+console.log("filteredParkingDatas", filteredParkingDatas);
+
 onMounted(() => {
+  initialiationMethod();
   propsData.value = filteredDrivingData;
   selected.value = true;
 });
+
+const initialiationMethod = () => {
+  let localStorageCards = localStorage.getItem("cards");
+  if (localStorageCards) {
+    cards.value = JSON.parse(localStorageCards);
+  } else {
+    localStorageCards = localStorage.setItem(
+      "cards",
+      JSON.stringify(cards.value)
+    );
+    if (localStorageCards) {
+      cards.value = JSON.parse(localStorageCards);
+    }
+  }
+};
 
 console.log("filteredParkingData", filteredParkingData);
 console.log("propsData", propsData.value);
