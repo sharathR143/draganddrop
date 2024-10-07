@@ -1,145 +1,123 @@
+
+
+
 <template>
-  <main
-    class="bg-white mt-10 pb-[40px] pt-5 3xl:px-[10px] 3xl:mt-5 rounded-lg xl:w-[1200px] 1xl:w-[1280px] 2xl:w-[1460px] 3xl:w-[1830px] xl:ml-[-60px] 1xl:ml-[-100px] 2xl:ml-[40px] 3xl:ml-[-60px] 3xl:h-[850px]"
-  >
+  <main class="bg-white mt-10 pb-[40px]  pt-5  3xl:px-[10px] 3xl:mt-5 rounded-lg  xl:w-[1200px] 1xl:w-[1280px] 2xl:w-[1460px] 3xl:w-[1830px] xl:ml-[-60px] 1xl:ml-[-100px] 2xl:ml-[-190px] 3xl:ml-[-60px]  3xl:h-[850px]">
     <div>
-      <h1
-        class="font-bold uppercase mb-[10px] pl-5 text-[#992121] text-[20px] 1xl:text-[17px] 3xl:text-[23px]"
-      >
-        PICCOLO Design studio
-      </h1>
+      <h1 class="font-bold  uppercase  mb-[10px]  pl-5 text-[#992121]  text-[20px] 1xl:text-[17px] 3xl:text-[23px]">PICCOLO Design studio</h1>
     </div>
 
+    
     <div class="flex">
-      <aside
-        class="container rounded-lg ml-5 1xl:h-[500px] 2xl:h-[560px] pb-10 1xl:w-[680px] 2xl:w-[800px] 3xl:w-[1000px] 3xl:h-[730px]"
-        style="background-color: #eff2ef"
-      >
-        <header v-if="!showPiccoloScenario">
-          <main
-            class="overflow-auto 3xl:pt-[60px] 1xl:h-[480px] pt-[40px] 2xl:h-[550px] 3xl:h-[680px] bg-gray-00 bg-red-00"
-          >
-            <div
-              class="pr-2 mt-[0px] ml-4 bg-red-00 relative left-[-10px] top-[-30px] 3xl:top-[-50px] w-[100px] h-[20px]"
-            >
-              <div class="flex bg-red-00 w-[250px] justify-between">
-                <v-btn
-                  :icon="showPiccoloScenario ? 'mdi-close' : 'mdi-plus'"
-                  size="small"
-                  color="primary"
-                  @click="togglePiccoloScenario"
-                  class="cursor-pointer"
-                ></v-btn>
-              </div>
-            </div>
-            <!-- card section -->
-            <div
-              class="flex gap-2 flex-wrap 1xl:ml-[10px] 2xl:ml-[10px] 3xl:pt-[10px] justify-start"
-            >
-              <div
-                v-for="card in cards"
-                :key="card.id"
-                class="bg-white 1xl:w-[260px] 2xl:w-[330px] 2xl:h-[450px] 3xl:h-[530px] 3xl:w-[400px] 2xl:ml-10 rounded-lg relative"
-                @click="selectCard(card)"
+      <aside  class="container   rounded-lg  ml-5  1xl:h-[500px] 2xl:h-[560px] pb-10  1xl:w-[680px] 2xl:w-[800px]  3xl:w-[1000px] 3xl:h-[730px]  " style="background-color:#EFF2EF;">
+
+      <header v-if="!showPiccoloScenario">
+        <main class="  overflow-auto 3xl:pt-[60px]  1xl:h-[480px] pt-[40px] 2xl:h-[550px] 3xl:h-[680px] bg-gray-00  bg-red-00">
+          
+          <div class="pr-2 mt-[0px] ml-4  bg-red-00 relative left-[-10px] top-[-30px]  3xl:top-[-50px]  w-[100px] h-[20px]">
+          <div class="flex  bg-red-00 w-[250px] justify-between">
+            <v-btn :icon="showPiccoloScenario ? 'mdi-close' : 'mdi-plus'" size="small" color="primary" @click="togglePiccoloScenario"  class="cursor-pointer "></v-btn>
+          </div>
+        </div>
+
+
+
+          <div class="flex gap-2 flex-wrap  1xl:ml-[10px]  2xl:ml-[30px]  3xl:pt-[10px]  justify-start">
+            <div v-for="card in cards"   :key="card.id" class="bg-white  1xl:w-[260px] 2xl:w-[310px] 2xl:h-[450px] 3xl:h-[530px] 3xl:w-[400px] 2xl:ml-10      rounded-lg  relative"
+               @click="selectCard(card)"
                 @dblclick="deselectCard(card.id)"
-                @touchstart="startLongPress(card)"
+                 @touchstart="startLongPress(card)"
                 @touchend="endLongPress"
-                :class="[
-                  'bg-white border-2 ml-10 mb-10 rounded-lg relative cursor-poi5nter transition-colors duration-300',
-                  selectedCardId === card.id
-                    ? 'border-4 border-red-500'
-                    : 'border-blue-500',
-                ]"
-              >
-                <!-- svg card click -->
-                <div
-                  v-if="animationCardId === card.id"
-                  class="absolute top-[-50px] left-[90px] 2xl:left-[110px] 3xl:left-[160px] transform -translate-x-1/2 text-4xl text-red-500 arrow-animation"
+              :class="['bg-white border-2 ml-10 mb-10 rounded-lg relative cursor-poi5nter transition-colors duration-300',
+                   selectedCardId === card.id ? 'border-4 border-red-500' : 'border-blue-500'
+                ]">
+              <div  v-if="animationCardId === card.id"
+               class="absolute   top-[-50px]  left-[90px] 2xl:left-[110px] 3xl:left-[160px] transform -translate-x-1/2 text-4xl text-red-500 arrow-animation"
+               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 1080 1080"
+                  width="80"
+                  height="80"
+                  preserveAspectRatio="xMidYMid meet"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    transform: translate3d(0px, 0px, 0px) rotate(90deg);
+                    content-visibility: visible;
+                  "
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 1080 1080"
-                    width="80"
-                    height="80"
-                    preserveAspectRatio="xMidYMid meet"
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      transform: translate3d(0px, 0px, 0px) rotate(90deg);
-                      content-visibility: visible;
-                    "
-                  >
-                    <defs>
-                      <clipPath id="__lottie_element_27881">
-                        <rect width="1080" height="1080" x="0" y="0"></rect>
-                      </clipPath>
-                    </defs>
-                    <g clip-path="url(#__lottie_element_27881)">
+                  <defs>
+                    <clipPath id="__lottie_element_27881">
+                      <rect width="1080" height="1080" x="0" y="0"></rect>
+                    </clipPath>
+                  </defs>
+                  <g clip-path="url(#__lottie_element_27881)">
+                    <g
+                      transform="matrix(3.190000057220459,0,0,3.190000057220459,424.0982666015625,338.81280517578125)"
+                      opacity="1"
+                      style="display: block"
+                    >
                       <g
-                        transform="matrix(3.190000057220459,0,0,3.190000057220459,424.0982666015625,338.81280517578125)"
                         opacity="1"
-                        style="display: block"
+                        transform="matrix(1,0,0,1,50.72800064086914,64.3219985961914)"
                       >
-                        <g
-                          opacity="1"
-                          transform="matrix(1,0,0,1,50.72800064086914,64.3219985961914)"
-                        >
-                          <path
-                            fill="rgb(255,94,0)"
-                            fill-opacity="1"
-                            d=" M46.05500030517578,5.840000152587891 C50.479000091552734,2.628000020980835 50.479000091552734,-2.628999948501587 46.05500030517578,-5.841000080108643 C46.05500030517578,-5.841000080108643 -44.599998474121094,-60.858001708984375 -44.599998474121094,-60.858001708984375 C-49.02399826049805,-64.07099914550781 -50.47800064086914,-61.874000549316406 -47.83100128173828,-55.97700119018555 C-47.83100128173828,-55.97700119018555 -16.658000946044922,0 -16.658000946044922,0 C-16.658000946044922,0 -47.83100128173828,55.97700119018555 -47.83100128173828,55.97700119018555 C-50.47800064086914,61.874000549316406 -49.02399826049805,64.07099914550781 -44.599998474121094,60.85900115966797 C-44.599998474121094,60.85900115966797 46.05500030517578,5.840000152587891 46.05500030517578,5.840000152587891z"
-                          ></path>
-                        </g>
-                        <g
-                          opacity="1"
-                          transform="matrix(1,0,0,1,50.8380012512207,95.49099731445312)"
-                        >
-                          <path
-                            fill="rgb(206,76,0)"
-                            fill-opacity="1"
-                            d=" M-16.767000198364258,-31.16900062561035 C-16.767000198364258,-31.16900062561035 -47.941001892089844,24.808000564575195 -47.941001892089844,24.808000564575195 C-50.5880012512207,30.704999923706055 -49.13399887084961,32.902000427246094 -44.709999084472656,29.690000534057617 C-44.709999084472656,29.690000534057617 45.94499969482422,-25.32900047302246 45.94499969482422,-25.32900047302246 C48.15700149536133,-26.934999465942383 49.26300048828125,-29.052000045776367 49.26300048828125,-31.16900062561035 C49.26300048828125,-31.16900062561035 -16.767000198364258,-31.16900062561035 -16.767000198364258,-31.16900062561035z"
-                          ></path>
-                        </g>
+                        <path
+                          fill="rgb(255,94,0)"
+                          fill-opacity="1"
+                          d=" M46.05500030517578,5.840000152587891 C50.479000091552734,2.628000020980835 50.479000091552734,-2.628999948501587 46.05500030517578,-5.841000080108643 C46.05500030517578,-5.841000080108643 -44.599998474121094,-60.858001708984375 -44.599998474121094,-60.858001708984375 C-49.02399826049805,-64.07099914550781 -50.47800064086914,-61.874000549316406 -47.83100128173828,-55.97700119018555 C-47.83100128173828,-55.97700119018555 -16.658000946044922,0 -16.658000946044922,0 C-16.658000946044922,0 -47.83100128173828,55.97700119018555 -47.83100128173828,55.97700119018555 C-50.47800064086914,61.874000549316406 -49.02399826049805,64.07099914550781 -44.599998474121094,60.85900115966797 C-44.599998474121094,60.85900115966797 46.05500030517578,5.840000152587891 46.05500030517578,5.840000152587891z"
+                        ></path>
                       </g>
                       <g
-                        transform="matrix(3.190000057220459,0,0,3.190000057220459,264.09820556640625,338.81280517578125)"
                         opacity="1"
-                        style="display: block"
+                        transform="matrix(1,0,0,1,50.8380012512207,95.49099731445312)"
                       >
-                        <g
-                          opacity="1"
-                          transform="matrix(1,0,0,1,50.72800064086914,64.3219985961914)"
-                        >
-                          <path
-                            fill="rgb(255,94,0)"
-                            fill-opacity="1"
-                            d=" M46.05500030517578,5.840000152587891 C50.479000091552734,2.628000020980835 50.479000091552734,-2.628999948501587 46.05500030517578,-5.841000080108643 C46.05500030517578,-5.841000080108643 -44.599998474121094,-60.858001708984375 -44.599998474121094,-60.858001708984375 C-49.02399826049805,-64.07099914550781 -50.47800064086914,-61.874000549316406 -47.83100128173828,-55.97700119018555 C-47.83100128173828,-55.97700119018555 -16.658000946044922,0 -16.658000946044922,0 C-16.658000946044922,0 -47.83100128173828,55.97700119018555 -47.83100128173828,55.97700119018555 C-50.47800064086914,61.874000549316406 -49.02399826049805,64.07099914550781 -44.599998474121094,60.85900115966797 C-44.599998474121094,60.85900115966797 46.05500030517578,5.840000152587891 46.05500030517578,5.840000152587891z"
-                          ></path>
-                        </g>
-                        <g
-                          opacity="1"
-                          transform="matrix(1,0,0,1,50.8380012512207,95.49099731445312)"
-                        >
-                          <path
-                            fill="rgb(206,76,0)"
-                            fill-opacity="1"
-                            d=" M-16.767000198364258,-31.16900062561035 C-16.767000198364258,-31.16900062561035 -47.941001892089844,24.808000564575195 -47.941001892089844,24.808000564575195 C-50.5880012512207,30.704999923706055 -49.13399887084961,32.902000427246094 -44.709999084472656,29.690000534057617 C-44.709999084472656,29.690000534057617 45.94499969482422,-25.32900047302246 45.94499969482422,-25.32900047302246 C48.15700149536133,-26.934999465942383 49.26300048828125,-29.052000045776367 49.26300048828125,-31.16900062561035 C49.26300048828125,-31.16900062561035 -16.767000198364258,-31.16900062561035 -16.767000198364258,-31.16900062561035z"
-                          ></path>
-                        </g>
+                        <path
+                          fill="rgb(206,76,0)"
+                          fill-opacity="1"
+                          d=" M-16.767000198364258,-31.16900062561035 C-16.767000198364258,-31.16900062561035 -47.941001892089844,24.808000564575195 -47.941001892089844,24.808000564575195 C-50.5880012512207,30.704999923706055 -49.13399887084961,32.902000427246094 -44.709999084472656,29.690000534057617 C-44.709999084472656,29.690000534057617 45.94499969482422,-25.32900047302246 45.94499969482422,-25.32900047302246 C48.15700149536133,-26.934999465942383 49.26300048828125,-29.052000045776367 49.26300048828125,-31.16900062561035 C49.26300048828125,-31.16900062561035 -16.767000198364258,-31.16900062561035 -16.767000198364258,-31.16900062561035z"
+                        ></path>
                       </g>
                     </g>
-                  </svg>
-                </div>
+                    <g
+                      transform="matrix(3.190000057220459,0,0,3.190000057220459,264.09820556640625,338.81280517578125)"
+                      opacity="1"
+                      style="display: block"
+                    >
+                      <g
+                        opacity="1"
+                        transform="matrix(1,0,0,1,50.72800064086914,64.3219985961914)"
+                      >
+                        <path
+                          fill="rgb(255,94,0)"
+                          fill-opacity="1"
+                          d=" M46.05500030517578,5.840000152587891 C50.479000091552734,2.628000020980835 50.479000091552734,-2.628999948501587 46.05500030517578,-5.841000080108643 C46.05500030517578,-5.841000080108643 -44.599998474121094,-60.858001708984375 -44.599998474121094,-60.858001708984375 C-49.02399826049805,-64.07099914550781 -50.47800064086914,-61.874000549316406 -47.83100128173828,-55.97700119018555 C-47.83100128173828,-55.97700119018555 -16.658000946044922,0 -16.658000946044922,0 C-16.658000946044922,0 -47.83100128173828,55.97700119018555 -47.83100128173828,55.97700119018555 C-50.47800064086914,61.874000549316406 -49.02399826049805,64.07099914550781 -44.599998474121094,60.85900115966797 C-44.599998474121094,60.85900115966797 46.05500030517578,5.840000152587891 46.05500030517578,5.840000152587891z"
+                        ></path>
+                      </g>
+                      <g
+                        opacity="1"
+                        transform="matrix(1,0,0,1,50.8380012512207,95.49099731445312)"
+                      >
+                        <path
+                          fill="rgb(206,76,0)"
+                          fill-opacity="1"
+                          d=" M-16.767000198364258,-31.16900062561035 C-16.767000198364258,-31.16900062561035 -47.941001892089844,24.808000564575195 -47.941001892089844,24.808000564575195 C-50.5880012512207,30.704999923706055 -49.13399887084961,32.902000427246094 -44.709999084472656,29.690000534057617 C-44.709999084472656,29.690000534057617 45.94499969482422,-25.32900047302246 45.94499969482422,-25.32900047302246 C48.15700149536133,-26.934999465942383 49.26300048828125,-29.052000045776367 49.26300048828125,-31.16900062561035 C49.26300048828125,-31.16900062561035 -16.767000198364258,-31.16900062561035 -16.767000198364258,-31.16900062561035z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div> 
+
                 <!-- arrow-animation left-to-right -->
-                <div
+                <!-- <div
                   v-if="
                     selectedCardId === card.id || longPressedCardId === card.id
                   "
                   class="absolute deletearrow top-[18px] right-[34px] z-10"
                 >
                   <button class="rotate-180">
-                    <!-- <img src="../public/img/arrow.gif" alt="arrow" /> -->
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -160,7 +138,6 @@
                         </clipPath>
                       </defs>
                       <g clip-path="url(#__lottie_element_13)">
-                        <!-- First path with animation -->
                         <g
                           transform="matrix(1,0,0,1,18.5,26.5)"
                           opacity="1"
@@ -178,7 +155,6 @@
                               stroke-dasharray="100"
                               stroke-dashoffset="100"
                             >
-                              <!-- Animation to "draw" the path -->
                               <animate
                                 attributeName="stroke-dashoffset"
                                 from="100"
@@ -191,7 +167,6 @@
                           </g>
                         </g>
 
-                        <!-- Second path with animation -->
                         <g
                           transform="matrix(1,0,0,1,18.5,26.5)"
                           opacity="1"
@@ -209,7 +184,6 @@
                               stroke-dasharray="50"
                               stroke-dashoffset="50"
                             >
-                              <!-- Animation to "draw" the path -->
                               <animate
                                 attributeName="stroke-dashoffset"
                                 from="50"
@@ -224,7 +198,7 @@
                       </g>
                     </svg>
 
-                    <!-- <svg
+                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns:xlink="http://www.w3.org/1999/xlink"
                       viewBox="0 0 37 53"
@@ -280,18 +254,16 @@
                           </g>
                         </g>
                       </g>
-                    </svg> -->
+                    </svg> 
                   </button>
-                </div>
+                </div> -->
 
                 <div
-                  v-if="
-                    selectedCardId === card.id || longPressedCardId === card.id
-                  "
-                  class="absolute top-2 right-2 z-10"
+                  v-if="!card.isDefault"
+                  class="absolute top-[1px] right-[-2px] z-10"
                 >
                   <button
-                    @click.stop="deleteCard(card)"
+                     @click.stop="deleteCard(card)"
                     class="text-red-500 hover:text-red-700"
                   >
                     <svg
@@ -310,77 +282,69 @@
                     </svg>
                   </button>
                 </div>
-                <!-- card image -->
-                <div class="bg-yellow-200 flex justify-center items-center">
-                  <img
-                    v-if="getImageForCard(card.name)"
-                    :src="getImageForCard(card.name)"
-                    alt="Car images"
-                    class="absolute top-[10px] left-[15px] 1xl:h-[150px] 1xl:w-[230px] 2xl:h-[150px] 2xl:w-[270px] 3xl:h-[200px] 3xl:w-[370px] rounded-lg"
-                  />
-                </div>
-                <!-- card name -->
-                <div
-                  class="bg-yellow-00 flex justify-end capitalize pt-[170px] 3xl:pt-[220px] text-[#992121] font-bold mr-9"
-                >
-                  {{ card.name }}
-                </div>
-                <!-- card content -->
-                <section
-                  class="bg-red-00 h-[250px] w-[330px] pb-4 overflow-auto flex justify-center items-end"
-                >
-                  <div
-                    class="flex justify-end items-end min-h-[250px] overflow-y-auto bg-red-00"
-                  >
-                    <div
-                      v-for="system in card.components"
-                      :key="system"
-                      class=""
-                    >
-                      <div
-                        class="bg-gray-300 1xl:px-2 1xl:py-1 1xl:mx-3 w-[60px] h-[30px] 2xl:px-1 2xl:py-2 mb-1 2xl:mx-3 3xl:px-6 3xl:py-2 3xl:mx-3 flex justify-center text-[16px] items-center"
-                        v-for="containerName in system.containers"
-                        :key="containerName"
-                      >
-                        {{ containerName }}
-                      </div>
 
-                      <div
-                        class="bg-blue-300 1xl:px-3 1xl:py-1 1xl:mx-3 w-[70px] h-[40px] 2xl:px-0 2xl:py-0 mb-1 2xl:mx-1 3xl:px-6 3xl:py-2 3xl:mx-3 flex justify-center items-center capitalize"
-                      >
-                        {{ system.system }}
-                      </div>
-                    </div>
-                  </div>
-                </section>
+
+
+
+              <div class="bg-red-00 flex justify-center items-center ">
+                <img v-if="getImageForCard(card.name)"  :src='getImageForCard(card.name)'  alt="Car images" class="absolute top-[10px] left-[15px]  1xl:h-[150px] 1xl:w-[230px] 2xl:h-[150px]  2xl:w-[270px] 3xl:h-[200px]  3xl:w-[370px] rounded-lg" />
               </div>
-            </div>
-          </main>
-        </header>
+              <div class=" bg-yellow-00  1xl:w-[255px]   2xl:w-[300px]  3xl:w-[390px]  flex justify-center  capitalize  pt-[170px]  3xl:pt-[220px] text-[#992121] font-bold mr-9" >
+                {{ card.name }}
+              </div>
 
-        <PiccoloScenario v-else @close="handleCloseScenario" />
-      </aside>
-      <aside>
-        <Servicelocation
-          :selectedCardName="selectedCardName"
-          class="relative top-[-420px] left-[25px] xl:top-[-10px] xl:left-[30px] 1xl:top-[0px] 1xl:left-[10px] 2xl:top-[0px] 2xl:left-[20px] 3xl:left-[70px]"
-        />
-      </aside>
-    </div>
-  </main>
+
+              <section class="bg-red-00  h-[250px] pb-4 overflow-auto flex justify-center items-end  ">
+              <div class="flex justify-end items-end min-h-[250px] overflow-y-auto   bg-red-00 ">
+                <div v-for="system in card.components" :key="system.system" class="">
+                  <div class="bg-blue-300  1xl:px-2  1xl:py-1 1xl:mx-3  2xl:px-2  2xl:py-1  mb-1  2xl:mx-1  3xl:px-6  3xl:py-2  3xl:mx-3 flex justify-center text-[16px] items-center"
+           v-for="containerName in system.containers" :key="containerName">
+                    {{ containerName  }}
+                  </div>
+
+                  <div class="1xl:px-3 border-2  border-blue-500 border-dashed  1xl:py-1 1xl:mx-3 2xl:px-2  2xl:py-2  mb-1  2xl:mx-1  3xl:px-6  3xl:py-2  3xl:mx-3 flex justify-center items-center capitalize "
+                  :class="{ 'py-2 px-2 border-3 border-blue-500 bg-gray-300 ':
+           system.system.toLowerCase()   === 'zc front' ||  system.system.toLowerCase() === 'zc rear'  }">
+                    {{ system.system }}
+                  </div>
+                </div>
+              </div>
+              </section>
+
+            </div>
+          </div>
+
+      </main>
+      </header>
+
+      <PiccoloScenario v-else   @close="handleCloseScenario"/>
+    </aside>
+     <aside>
+      <Servicelocation :selectedCardName="selectedCardName" class="relative top-[-420px] left-[25px] xl:top-[-10px] xl:left-[30px]  1xl:top-[0px] 1xl:left-[10px]  2xl:top-[0px] 2xl:left-[20px]  3xl:left-[70px]" />
+    </aside> 
+
+  </div>
+</main> 
 </template>
 
+
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount,watch } from "vue";
+import axios from "axios"; // Import Axios
+import yaml from "js-yaml"; // Import js-yaml for YAML conversion
+
 // COMPONENTS
-import PiccoloScenario from "./piccoloSenario.vue";
-import Servicelocation from "./servicelocation.vue";
+import PiccoloScenario from "./PiccoloScenario.vue";
+import Servicelocation from "./service-location.vue";
 
 // IMAGES
-import carDriving from "../public/img/driving.jpeg";
-import carParking from "../public/img/parking.jpg";
-import carCharging from "../public/img/charging.jpeg";
-import carLowbattery from "../public/img/lowbattery.jpeg";
+import carDriving from "../../public/img/car.png";
+import carParking from "../../public/img/car1.png";
+import carCharging from "../../public/img/charging.png";
+
+const nuxtApp = useNuxtApp();
+const API_URL =nuxtApp.$config.public.apiUrl;
+
 
 const showPiccoloScenario = ref(false);
 
@@ -398,20 +362,23 @@ const reloadPage = () => {
   initialiationMethod(); // Fetch data from localStorage
 };
 
+
 let cards = ref([
   {
     id: 1,
-    name: "driving",
+    name:  'High-performance for BMS',
+    isDefault: true, // Mark as default
     components: [
       { system: "soc0", containers: [] },
-      { system: "soc1", containers: ["rdv", "mavd", "frism", "blis"] },
-      { system: "zc front", containers: [] },
+      { system: "soc1", containers: [ "mavd",  "blis"] },
+      { system: "zc front", containers: ["rdv","frism"] },
       { system: "zc rear", containers: [] },
     ],
   },
   {
     id: 2,
-    name: "parking",
+    name:'Eco mode ON for BMS',
+    isDefault: true, // Mark as default
     components: [
       { system: "soc0", containers: ["blis"] },
       { system: "soc1", containers: [] },
@@ -423,16 +390,17 @@ let cards = ref([
 
 const getImageForCard = (cardName) => {
   const images = {
-    driving: carDriving,
-    parking: carParking,
-    charging: carCharging,
-    lowbattery: carLowbattery,
+    'High-performance for BMS': carDriving,
+    'Eco mode ON for BMS': carParking,
+    'Charging for BMS': carCharging,
+    // lowbattery: carLowbattery,
   };
   return images[cardName] || null;
 };
 
 onMounted(() => {
   initialiationMethod();
+  startAutoSelection(); 
 });
 
 const initialiationMethod = () => {
@@ -440,23 +408,30 @@ const initialiationMethod = () => {
   if (localStorageCards) {
     cards.value = JSON.parse(localStorageCards);
   } else {
-    localStorageCards = localStorage.setItem(
-      "cards",
-      JSON.stringify(cards.value)
-    );
-    if (localStorageCards) {
-      cards.value = JSON.parse(localStorageCards);
-    }
+    localStorage.setItem("cards", JSON.stringify(cards.value));
+
+    // localStorageCards = localStorage.setItem(
+    //   "cards",
+    //   JSON.stringify(cards.value)
+    // );
+    // if (localStorageCards) {
+    //   cards.value = JSON.parse(localStorageCards);
+    // }
   }
 };
 
 const selectedCardId = ref(null);
+
 // Reactive state to track the card currently showing the animation
 const animationCardId = ref(null);
+
 // Timer reference to control the animation timeout
 let animationTimer = null;
+
 // Function to check if a card is selected
 const isSelected = (card) => selectedCardId.value === card.id;
+
+
 
 // Function to select a card (single click)
 const selectCard = (card) => {
@@ -465,11 +440,40 @@ const selectCard = (card) => {
     resetAnimation(card.id);
     return;
   }
+
+  // Set the selected card ID
   selectedCardId.value = card.id;
   console.log("Selected Card ID:", selectedCardId.value);
   // Start the SVG animation
   startAnimation(card.id);
+   // Reset the automatic selection timer
+   resetAutoSelection();
+
+   // Prepare data in YAML format
+   
+   const data = {
+    id: card.id,
+    name: card.name,
+    components: card.components,
+  };
+
+  const yamlData = yaml.dump(data);
+  // Send POST request with YAML data
+  axios
+    .post(API_URL , yamlData, {
+      headers: {
+        "Content-Type": "application/x-yaml",
+      },
+    })
+    .then((response) => {
+      console.log("Data sent successfully:", response.data);
+    })
+    .catch((error) => {
+      console.error("Error sending data:", error);
+    });
+ 
 };
+
 
 // Function to deselect a card (double click)
 const deselectCard = (cardId) => {
@@ -480,6 +484,7 @@ const deselectCard = (cardId) => {
     console.log("Deselected Card ID:", cardId);
   }
 };
+
 
 // Function to start the animation
 const startAnimation = (cardId) => {
@@ -494,6 +499,7 @@ const startAnimation = (cardId) => {
   }, 3000);
 };
 
+
 // Function to reset the animation (optional)
 const resetAnimation = (cardId) => {
   // Clear existing timer
@@ -501,6 +507,7 @@ const resetAnimation = (cardId) => {
   // Restart the animation
   startAnimation(cardId);
 };
+
 
 // Function to clear the animation timer
 const clearAnimationTimer = () => {
@@ -512,6 +519,7 @@ const clearAnimationTimer = () => {
 
 onBeforeUnmount(() => {
   clearAnimationTimer();
+  clearAutoSelection(); // Clear the automatic selection timer
 });
 
 const selectedCardName = ref(null);
@@ -520,6 +528,7 @@ watch(selectedCardId, (newId) => {
   const selectedCard = cards.value.find((card) => card.id === newId);
   selectedCardName.value = selectedCard ? selectedCard.name : null;
 });
+
 
 const deleteCard = (card) => {
   // Remove the card from the cards array
@@ -533,10 +542,75 @@ const deleteCard = (card) => {
   //   animationCardId.value = null;
   //   clearAnimationTimer();
   // }
+  // console.log("Deleted card:", card.id);
 
-  console.log("Deleted card:", card.id);
+  if (card.isDefault) {
+      // Prevent deletion of default cards
+      alert("This card cannot be deleted.");
+      return;
+    }
+  
+    // Remove the card from the cards array
+    cards.value = cards.value.filter((c) => c.id !== card.id);
+  
+    // Update localStorage
+    localStorage.setItem("cards", JSON.stringify(cards.value));
+  
+    console.log("Deleted card:", card.id);
+  
+    // If the deleted card was selected, deselect it
+    if (selectedCardId.value === card.id) {
+      selectedCardId.value = null;
+      animationCardId.value = null;
+      clearAnimationTimer();
+    }
 };
+
+// -------------------- Automatic Selection Logic -------------------- //
+
+// Reference to store the interval timer for automatic selection
+let autoSelectTimer = null;
+
+// Current index for automatic selection
+let currentAutoIndex = 0;
+
+// Function to start automatic selection
+const startAutoSelection = () => {
+  if (autoSelectTimer) return; // Prevent multiple intervals
+
+  autoSelectTimer = setInterval(() => {
+    if (cards.value.length === 0) return;
+
+    // Select the next card in sequence
+    const card = cards.value[currentAutoIndex];
+    if (card) {
+      selectCard(card);
+      console.log(`Automatically selected card ID: ${card.id}`);
+    }
+
+    // Update the index for next selection
+    currentAutoIndex = (currentAutoIndex + 1) % cards.value.length;
+  }, 30000); // 30000 milliseconds = 30 seconds
+};
+
+// Function to reset the automatic selection timer
+const resetAutoSelection = () => {
+  clearAutoSelection();
+  startAutoSelection();
+};
+
+// Function to clear the automatic selection timer
+const clearAutoSelection = () => {
+  if (autoSelectTimer) {
+    clearInterval(autoSelectTimer);
+    autoSelectTimer = null;
+  }
+};
+
+// Optionally, you can start the automatic selection immediately
+// startAutoSelection();
 </script>
+
 
 <style scoped>
 .deletearrow {
@@ -555,62 +629,6 @@ const deleteCard = (card) => {
   }
 }
 
-.left-to-right {
-  animation: moveLeftToRight 1s ease-in-out infinite;
-}
-
-@keyframes moveLeftToRight {
-  0%,
-  100% {
-    transform: translateX(0) rotate(190deg);
-  }
-  50% {
-    transform: translateX(10px) rotate(190deg);
-  }
-}
-
-.arrow-animation {
-  transition: opacity 0.3s ease-in-out;
-}
-
-.arrow-animation.left-to-right {
-  animation: moveLeftToRight 1s ease-in-out infinite, fadeInOut 3s forwards;
-}
-
-@keyframes fadeInOut {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-}
-
-.arrow-animation {
-  animation: arrowFadeInOut 3s ease-in-out;
-}
-
-@keyframes arrowFadeInOut {
-  0% {
-    opacity: 0;
-    transform: translateY(-130px);
-  }
-  30% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-}
-
 .v-icon {
   font-size: 25px;
 }
@@ -618,45 +636,30 @@ const deleteCard = (card) => {
 .arrow-animation {
   animation: fadeInOut 4s forwards;
   z-index: 10;
-  animation: bounceAnimation 3s infinite;
+  animation: bounceAnimation 3s infinite; 
 }
 
 @keyframes bounceAnimation {
-  0%,
-  100% {
-    transform: translateY(0);
+  0%, 100% {
+    transform: translateY(0); 
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-20px); 
   }
 }
 
 @keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-  }
-  20% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  80% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, 0);
-  }
+  0% { opacity: 0; transform: translate(-50%, -20px); }
+  20% { opacity: 1; transform: translate(-50%, 0); }
+  80% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, 0); }
 }
 
 /* Fade transition effect */
-.fade-enter-active,
-.fade-leave-active {
+.fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter,
-.fade-leave-to {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 
@@ -704,3 +707,5 @@ const deleteCard = (card) => {
   transition: border-color 0.3s ease;
 }
 </style>
+
+
