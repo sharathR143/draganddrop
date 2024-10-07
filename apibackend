@@ -1,0 +1,38 @@
+const express = require("express");
+const yaml = require("js-yaml");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+const app = express();
+const port = 4000; // Matching the port in your error message
+
+// Enable CORS for all routes
+app.use(cors());
+
+// Middleware to parse YAML
+app.use(bodyParser.text({ type: "application/x-yaml" }));
+
+app.post("/api/scenario", (req, res) => {
+  try {
+    // Parse the YAML data from the request body
+    const yamlData = yaml.load(req.body);
+
+    // Log the received data (you can process it as needed)
+    console.log("Received YAML data:", yamlData);
+
+    // TODO: Add your processing logic here
+    // For example, you might want to validate the data, save it to a database, etc.
+
+    // Send a success response
+    res
+      .status(200)
+      .json({ message: "Scenario received successfully", data: yamlData });
+  } catch (error) {
+    console.error("Error processing YAML:", error);
+    res.status(400).json({ error: "Invalid YAML data" });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
