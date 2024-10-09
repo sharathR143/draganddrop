@@ -2,322 +2,125 @@
 
 
 <template>
-  <main class="bg-white mt-10 pb-[40px]  pt-5  3xl:px-[10px] 3xl:mt-5 rounded-lg  xl:w-[1200px] 1xl:w-[1280px] 2xl:w-[1460px] 3xl:w-[1830px] xl:ml-[-60px] 1xl:ml-[-100px] 2xl:ml-[-190px] 3xl:ml-[-60px]  3xl:h-[850px]">
+  <main class="bg-white bg-emerald-00 mt-10 pb-[40px]  pt-5  3xl:px-[10px] 3xl:mt-5 rounded-lg  xl:w-[1200px] 1xl:w-[1280px] 2xl:w-[1460px] 3xl:w-[1830px] xl:ml-[-60px] 1xl:ml-[-100px] 2xl:ml-[-190px] 3xl:ml-[-60px]  3xl:h-[850px]">
     <div>
       <h1 class="font-bold  uppercase  mb-[10px]  pl-5 text-[#992121]  text-[20px] 1xl:text-[17px] 3xl:text-[23px]">PICCOLO Design studio</h1>
     </div>
 
     
     <div class="flex">
-      <aside  class="container   rounded-lg  ml-5  1xl:h-[500px] 2xl:h-[560px] pb-10  1xl:w-[680px] 2xl:w-[800px]  3xl:w-[1000px] 3xl:h-[730px]  " style="background-color:#EFF2EF;">
-
-      <header v-if="!showPiccoloScenario">
-        <main class="  overflow-auto 3xl:pt-[60px]  1xl:h-[480px] pt-[40px] 2xl:h-[550px] 3xl:h-[680px] bg-gray-00  bg-red-00">
-          
-          <div class="pr-2 mt-[0px] ml-4  bg-red-00 relative left-[-10px] top-[-30px]  3xl:top-[-50px]  w-[100px] h-[20px]">
-          <div class="flex  bg-red-00 w-[250px] justify-between">
-            <v-btn :icon="showPiccoloScenario ? 'mdi-close' : 'mdi-plus'" size="small" color="primary" @click="togglePiccoloScenario"  class="cursor-pointer "></v-btn>
-          </div>
-        </div>
-
-
-
-          <div class="flex gap-2 flex-wrap  1xl:ml-[10px]  2xl:ml-[30px]  3xl:pt-[10px]  justify-start">
-            <div v-for="card in cards"   :key="card.id" class="bg-white  1xl:w-[260px] 2xl:w-[310px] 2xl:h-[450px] 3xl:h-[530px] 3xl:w-[400px] 2xl:ml-10      rounded-lg  relative"
-               @click="selectCard(card)"
-                @dblclick="deselectCard(card.id)"
-                 @touchstart="startLongPress(card)"
-                @touchend="endLongPress"
-              :class="['bg-white border-2 ml-10 mb-10 rounded-lg relative cursor-poi5nter transition-colors duration-300',
-                   selectedCardId === card.id ? 'border-4 border-red-500' : 'border-blue-500'
-                ]">
-              <div  v-if="animationCardId === card.id"
-               class="absolute   top-[-50px]  left-[90px] 2xl:left-[110px] 3xl:left-[160px] transform -translate-x-1/2 text-4xl text-red-500 arrow-animation"
-               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 1080 1080"
-                  width="80"
-                  height="80"
-                  preserveAspectRatio="xMidYMid meet"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    transform: translate3d(0px, 0px, 0px) rotate(90deg);
-                    content-visibility: visible;
-                  "
-                >
-                  <defs>
-                    <clipPath id="__lottie_element_27881">
-                      <rect width="1080" height="1080" x="0" y="0"></rect>
-                    </clipPath>
-                  </defs>
-                  <g clip-path="url(#__lottie_element_27881)">
-                    <g
-                      transform="matrix(3.190000057220459,0,0,3.190000057220459,424.0982666015625,338.81280517578125)"
-                      opacity="1"
-                      style="display: block"
-                    >
-                      <g
-                        opacity="1"
-                        transform="matrix(1,0,0,1,50.72800064086914,64.3219985961914)"
-                      >
-                        <path
-                          fill="rgb(255,94,0)"
-                          fill-opacity="1"
-                          d=" M46.05500030517578,5.840000152587891 C50.479000091552734,2.628000020980835 50.479000091552734,-2.628999948501587 46.05500030517578,-5.841000080108643 C46.05500030517578,-5.841000080108643 -44.599998474121094,-60.858001708984375 -44.599998474121094,-60.858001708984375 C-49.02399826049805,-64.07099914550781 -50.47800064086914,-61.874000549316406 -47.83100128173828,-55.97700119018555 C-47.83100128173828,-55.97700119018555 -16.658000946044922,0 -16.658000946044922,0 C-16.658000946044922,0 -47.83100128173828,55.97700119018555 -47.83100128173828,55.97700119018555 C-50.47800064086914,61.874000549316406 -49.02399826049805,64.07099914550781 -44.599998474121094,60.85900115966797 C-44.599998474121094,60.85900115966797 46.05500030517578,5.840000152587891 46.05500030517578,5.840000152587891z"
-                        ></path>
-                      </g>
-                      <g
-                        opacity="1"
-                        transform="matrix(1,0,0,1,50.8380012512207,95.49099731445312)"
-                      >
-                        <path
-                          fill="rgb(206,76,0)"
-                          fill-opacity="1"
-                          d=" M-16.767000198364258,-31.16900062561035 C-16.767000198364258,-31.16900062561035 -47.941001892089844,24.808000564575195 -47.941001892089844,24.808000564575195 C-50.5880012512207,30.704999923706055 -49.13399887084961,32.902000427246094 -44.709999084472656,29.690000534057617 C-44.709999084472656,29.690000534057617 45.94499969482422,-25.32900047302246 45.94499969482422,-25.32900047302246 C48.15700149536133,-26.934999465942383 49.26300048828125,-29.052000045776367 49.26300048828125,-31.16900062561035 C49.26300048828125,-31.16900062561035 -16.767000198364258,-31.16900062561035 -16.767000198364258,-31.16900062561035z"
-                        ></path>
-                      </g>
-                    </g>
-                    <g
-                      transform="matrix(3.190000057220459,0,0,3.190000057220459,264.09820556640625,338.81280517578125)"
-                      opacity="1"
-                      style="display: block"
-                    >
-                      <g
-                        opacity="1"
-                        transform="matrix(1,0,0,1,50.72800064086914,64.3219985961914)"
-                      >
-                        <path
-                          fill="rgb(255,94,0)"
-                          fill-opacity="1"
-                          d=" M46.05500030517578,5.840000152587891 C50.479000091552734,2.628000020980835 50.479000091552734,-2.628999948501587 46.05500030517578,-5.841000080108643 C46.05500030517578,-5.841000080108643 -44.599998474121094,-60.858001708984375 -44.599998474121094,-60.858001708984375 C-49.02399826049805,-64.07099914550781 -50.47800064086914,-61.874000549316406 -47.83100128173828,-55.97700119018555 C-47.83100128173828,-55.97700119018555 -16.658000946044922,0 -16.658000946044922,0 C-16.658000946044922,0 -47.83100128173828,55.97700119018555 -47.83100128173828,55.97700119018555 C-50.47800064086914,61.874000549316406 -49.02399826049805,64.07099914550781 -44.599998474121094,60.85900115966797 C-44.599998474121094,60.85900115966797 46.05500030517578,5.840000152587891 46.05500030517578,5.840000152587891z"
-                        ></path>
-                      </g>
-                      <g
-                        opacity="1"
-                        transform="matrix(1,0,0,1,50.8380012512207,95.49099731445312)"
-                      >
-                        <path
-                          fill="rgb(206,76,0)"
-                          fill-opacity="1"
-                          d=" M-16.767000198364258,-31.16900062561035 C-16.767000198364258,-31.16900062561035 -47.941001892089844,24.808000564575195 -47.941001892089844,24.808000564575195 C-50.5880012512207,30.704999923706055 -49.13399887084961,32.902000427246094 -44.709999084472656,29.690000534057617 C-44.709999084472656,29.690000534057617 45.94499969482422,-25.32900047302246 45.94499969482422,-25.32900047302246 C48.15700149536133,-26.934999465942383 49.26300048828125,-29.052000045776367 49.26300048828125,-31.16900062561035 C49.26300048828125,-31.16900062561035 -16.767000198364258,-31.16900062561035 -16.767000198364258,-31.16900062561035z"
-                        ></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div> 
-
-                <!-- arrow-animation left-to-right -->
-                <!-- <div
-                  v-if="
-                    selectedCardId === card.id || longPressedCardId === card.id
-                  "
-                  class="absolute deletearrow top-[18px] right-[34px] z-10"
-                >
-                  <button class="rotate-180">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      viewBox="0 0 37 53"
-                      width="40"
-                      height="50"
-                      preserveAspectRatio="xMidYMid meet"
-                      style="
-                        width: 100%;
-                        height: 100%;
-                        transform: rotate(10deg);
-                        content-visibility: visible;
-                      "
-                    >
-                      <defs>
-                        <clipPath id="__lottie_element_13">
-                          <rect width="37" height="53" x="0" y="0"></rect>
-                        </clipPath>
-                      </defs>
-                      <g clip-path="url(#__lottie_element_13)">
-                        <g
-                          transform="matrix(1,0,0,1,18.5,26.5)"
-                          opacity="1"
-                          style="display: block"
-                        >
-                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              fill-opacity="0"
-                              stroke="rgb(255,105,59)"
-                              stroke-opacity="1"
-                              stroke-width="3"
-                              d="M16.625,-24.5 C16.625,-24.5 22.375,4.125 -15,20.625"
-                              stroke-dasharray="100"
-                              stroke-dashoffset="100"
-                            >
-                              <animate
-                                attributeName="stroke-dashoffset"
-                                from="100"
-                                to="0"
-                                dur="1.5s"
-                                fill="freeze"
-                                repeatCount="indefinite"
-                              />
-                            </path>
-                          </g>
-                        </g>
-
-                        <g
-                          transform="matrix(1,0,0,1,18.5,26.5)"
-                          opacity="1"
-                          style="display: block"
-                        >
-                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              fill-opacity="0"
-                              stroke="rgb(255,105,59)"
-                              stroke-opacity="1"
-                              stroke-width="3"
-                              d="M-11.25,11.875 C-11.25,11.875 -16,21 -16,21 C-16,21 -9.654000282287598,22.972000122070312 -7.474999904632568,23.649999618530273"
-                              stroke-dasharray="50"
-                              stroke-dashoffset="50"
-                            >
-                              <animate
-                                attributeName="stroke-dashoffset"
-                                from="50"
-                                to="0"
-                                dur="1.5s"
-                                fill="freeze"
-                                repeatCount="indefinite"
-                              />
-                            </path>
-                          </g>
-                        </g>
-                      </g>
-                    </svg>
-
-                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      viewBox="0 0 37 53"
-                      width="40"
-                      height="50"
-                      preserveAspectRatio="xMidYMid meet"
-                      style="
-                        width: 100%;
-                        height: 100%;
-                        transform: rotate(190deg);
-                        transform: translate3d(0px, 0px, 0px);
-                        content-visibility: visible;
-                      "
-                    >
-                      <defs>
-                        <clipPath id="__lottie_element_13">
-                          <rect width="37" height="53" x="0" y="0"></rect>
-                        </clipPath>
-                      </defs>
-                      <g clip-path="url(#__lottie_element_13)">
-                        <g
-                          transform="matrix(1,0,0,1,18.5,26.5)"
-                          opacity="1"
-                          style="display: block"
-                        >
-                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              fill-opacity="0"
-                              stroke="rgb(255,105,59)"
-                              stroke-opacity="1"
-                              stroke-width="3"
-                              d=" M16.625,-24.5 C16.625,-24.5 22.375,4.125 -15,20.625"
-                            ></path>
-                          </g>
-                        </g>
-                        <g
-                          transform="matrix(1,0,0,1,18.5,26.5)"
-                          opacity="1"
-                          style="display: block"
-                        >
-                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              fill-opacity="0"
-                              stroke="rgb(255,105,59)"
-                              stroke-opacity="1"
-                              stroke-width="3"
-                              d=" M-11.25,11.875 C-11.25,11.875 -16,21 -16,21 C-16,21 -9.654000282287598,22.972000122070312 -7.474999904632568,23.649999618530273"
-                            ></path>
-                          </g>
-                        </g>
-                      </g>
-                    </svg> 
-                  </button>
-                </div> -->
-
-                <div
-                  v-if="!card.isDefault"
-                  class="absolute top-[1px] right-[-2px] z-10"
-                >
-                  <button
-                     @click.stop="deleteCard(card)"
-                    class="text-red-500 hover:text-red-700"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-
-
-
-              <div class="bg-red-00 flex justify-center items-center ">
-                <img v-if="getImageForCard(card.name)"  :src='getImageForCard(card.name)'  alt="Car images" class="absolute top-[10px] left-[15px]  1xl:h-[150px] 1xl:w-[230px] 2xl:h-[150px]  2xl:w-[270px] 3xl:h-[200px]  3xl:w-[370px] rounded-lg" />
-              </div>
-              <div class=" bg-yellow-00  1xl:w-[255px]   2xl:w-[300px]  3xl:w-[390px]  flex justify-center  capitalize  pt-[170px]  3xl:pt-[220px] text-[#992121] font-bold mr-9" >
-                {{ card.name }}
-              </div>
-
-
-              <section class="bg-red-00  h-[250px] pb-4 overflow-auto flex justify-center items-end  ">
-              <div class="flex justify-end items-end min-h-[250px] overflow-y-auto   bg-red-00 ">
-                <div v-for="system in card.components" :key="system.system" class="">
-                  <div class="bg-blue-300  1xl:px-2  1xl:py-1 1xl:mx-3  2xl:px-2  2xl:py-1  mb-1  2xl:mx-1  3xl:px-6  3xl:py-2  3xl:mx-3 flex justify-center text-[16px] items-center"
-           v-for="containerName in system.containers" :key="containerName">
-                    {{ containerName  }}
-                  </div>
-
-                  <div class="1xl:px-3 border-2  border-blue-500 border-dashed  1xl:py-1 1xl:mx-3 2xl:px-2  2xl:py-2  mb-1  2xl:mx-1  3xl:px-6  3xl:py-2  3xl:mx-3 flex justify-center items-center capitalize "
-                  :class="{ 'py-2 px-2 border-3 border-blue-500 bg-gray-300 ':
-           system.system.toLowerCase()   === 'zc front' ||  system.system.toLowerCase() === 'zc rear'  }">
-                    {{ system.system }}
-                  </div>
-                </div>
-              </div>
-              </section>
-
+      <aside  class="container   rounded-lg  ml-5  1xl:h-[500px] 2xl:h-[560px] pb-10  1xl:w-[680px] 2xl:w-[800px]  3xl:w-[1000px] 3xl:h-[730px]" style="background-color:#EFF2EF;">
+        <div class="pr-2 mt-[0px] ml-4  bg-red-00 relative left-[-8px] top-[6px]  3xl:top-[5px]  w-[100px] h-[20px]">
+            <div class="flex  bg-red-00 w-[250px] justify-between">
+              <v-btn  v-if="!showPiccoloScenario" icon='mdi-plus' size="small" color="primary" @click="togglePiccoloScenario"  class="cursor-pointer "></v-btn>
             </div>
           </div>
 
+      <header v-if="!showPiccoloScenario">
+        <main class="  overflow-auto 3xl:pt-[60px]  1xl:h-[480px] pt-[40px] 2xl:h-[550px] 3xl:h-[680px] bg-gray-00  bg-red-00">
+          <div class="flex  gap-2 bg-red-00 1xl:ml-[10px]  2xl:ml-[0px]  3xl:pt-[10px]  justify-start">
+            <div v-for="card in cards"   :key="card.id" class="bg-whit bg-red-300 m 1xl:w-[260px] cursor-pointer  2xl:w-[310px] 2xl:h-[450px] 3xl:h-[530px] 3xl:w-[400px] 2xl:ml-10      rounded-lg  relative"
+             @click="selectCard(card)"
+             @dblclick="deselectCard(card.id)"
+             @mousedown="startLongPress(card)"
+             @mouseup="endLongPress"
+             @mouseleave="endLongPress"
+             @touchstart="startLongPress(card)"
+             @touchend="endLongPress"
+             @touchcancel="endLongPress"
+             :class="['bg-white border-2 pr-5 mx-10 mb-10 rounded-lg relative cursor-poi5nter transition-colors duration-300',
+                   selectedCardId === card.id ? 'border-[3px] border-red-500' : 'border-blue-500'
+                ]">
+                
+                <!-- Delete icon (centered and initially hidden) -->
+                 <div v-if="(longPressedCard === card || deleteIconVisibleCards.includes(card.id)) && !card.isDefault" 
+                  class="absolute top-[464px] left-[140px] 3xl:top-[550px] 3xl:left-[200px] inset-0 flex items-center justify-center cursor-pointer z-20 bg-opacity-50  bg-yellow-200 h-[10px] w-[10px] animate-bounce">
+                   <v-icon @click.stop="deleteCard(card)" color="white" size="large">mdi-delete</v-icon>
+                  </div>
+                
+                <div class="bg-red-00 flex justify-center items-center ">
+                  <img v-if="getImageForCard(card.name)"  :src='getImageForCard(card.name)'  alt="Car images" class="absolute  top-[14px] 2xl:top-[25px] 3xl:top-[30px]  left-[15px] 3xl:left-[20px]   1xl:h-[150px] 1xl:w-[230px] 2xl:h-[150px]  2xl:w-[270px] 3xl:h-[200px]  3xl:w-[350px] rounded-lg" />
+                </div>
+                
+
+                
+                <div class=" bg-yellow-00  1xl:w-[255px]   2xl:w-[300px]  3xl:w-[390px]  flex justify-center  capitalize  pt-[170px]  2xl:pt-[180px] 3xl:pt-[240px] text-[#992121] font-bold mr-9" >
+                  {{ card.name }}
+                </div>
+
+             
+                <section class="bg-red-00  h-[250px] pb-4 overflow-auto flex justify-center items-end  ">
+                  <div class="flex justify-end items-end min-h-[250px] overflow-y-auto   bg-red-00 "  
+                  >
+                  
+<div class="w-[80px] h-[40px] absolute top-[280px] left-[50px] 3xl:top-[330px]  3xl:left-[100px] " v-if="card.name==='Eco mode ON for BMS'">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+<defs>
+<!-- Cloud gradient -->
+<linearGradient id="cloudGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" style="stop-color:#FFFFFF" />
+<stop offset="100%" style="stop-color:#E0E0E0" />
+</linearGradient>
+<!-- Zzz gradient -->
+<linearGradient id="zzzGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#6A8CAF" />
+<stop offset="100%" style="stop-color:#4A6A8C" />
+</linearGradient>
+</defs>
+
+<!-- Main cloud body -->
+<path d="M45 100 Q25 100 25 80 Q25 65 40 65 Q40 40 70 40 Q90 25 110 40 Q125 30 140 40 Q160 30 175 45 Q200 45 210 65 Q230 70 230 90 Q230 110 210 115 Q215 130 200 140 Q180 150 160 140 Q150 150 130 145 Q110 155 90 145 Q70 155 55 140 Q40 140 35 125 Q20 115 30 100" 
+fill="url(#cloudGradient)" 
+stroke="#B0B0B0" 
+stroke-width="3"
+stroke-linejoin="round"/>
+
+
+
+<!-- Zzz symbols -->
+<g transform="translate(160, 30) rotate(-10)">
+<path d="M0 0 L20 0 L0 20 L25 20" stroke="url(#zzzGradient)" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round">
+<animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" />
+</path>
+<path d="M10 25 L25 25 L10 40 L30 40" stroke="url(#zzzGradient)" stroke-width="4" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity="0.8">
+<animate attributeName="opacity" values="0;0.8;0" dur="4s" repeatCount="indefinite" begin="0.5s" />
+</path>
+<path d="M20 45 L30 45 L20 55 L35 55" stroke="url(#zzzGradient)" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity="0.6">
+<animate attributeName="opacity" values="0;0.6;0" dur="4s" repeatCount="indefinite" begin="1s" />
+</path>
+</g>
+</svg>
+ </div>
+                    <section v-for="system in card.components" :key="system.system" 
+                    :class="[
+                        card.name === 'Eco mode ON for BMS' && system.system === 'HPC' 
+                          ? 'bg-gray-300 pt-2 rounded-lg opacity-50' 
+                          : ''
+                      ]">
+                
+                      <div    class="bg-blue-300  1xl:px-2  1xl:py-1 1xl:mx-3  2xl:px-[15px]  2xl:py-[5px]  mb-1  2xl:mx-3   3xl:px-3  3xl:py-2  3xl:mx-2 flex justify-center text-[16px] items-center"
+                      v-for="containerName in system.containers" :key="containerName"
+                      :class="[
+                        card.name === 'Eco mode ON for BMS' && system.system === 'HPC' 
+                          ? 'bg-gray-300 pt-2 rounded-lg opacity-50' 
+                          : ''
+                      ]"
+                     >
+                      {{ containerName  }}
+                    </div>
+                    
+                    <div class="1xl:px-3 border-2 uppercase   border-blue-500 border-dashed  1xl:py-1 1xl:mx-3 2xl:px-[15px]  2xl:py-[5px]  mb-1  2xl:mx-3  3xl:px-3  3xl:py-2  3xl:mx-2 flex justify-center items-center "
+                    >
+                      {{ system.system }}
+                    </div>
+                  </section>
+                </div>
+              </section>
+            </div>
+          </div>
       </main>
       </header>
-
-      <PiccoloScenario v-else   @close="handleCloseScenario"/>
+      <PiccoloScenario v-else   @close="handleCloseScenario"  class="bg-red-00"/>
     </aside>
      <aside>
       <Servicelocation :selectedCardName="selectedCardName" class="relative top-[-420px] left-[25px] xl:top-[-10px] xl:left-[30px]  1xl:top-[0px] 1xl:left-[10px]  2xl:top-[0px] 2xl:left-[20px]  3xl:left-[70px]" />
@@ -329,9 +132,9 @@
 
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount,watch } from "vue";
-import axios from "axios"; // Import Axios
-import yaml from "js-yaml"; // Import js-yaml for YAML conversion
+import { ref, onMounted, onBeforeUnmount, watch } from "vue";
+import axios from "axios"; 
+import yaml from "js-yaml";
 
 // COMPONENTS
 import PiccoloScenario from "./PiccoloScenario.vue";
@@ -343,173 +146,156 @@ import carParking from "../../public/img/car1.png";
 import carCharging from "../../public/img/charging.png";
 
 const nuxtApp = useNuxtApp();
-const API_URL =nuxtApp.$config.public.apiUrl;
-
+const API_URL = nuxtApp.$config.public.apiUrl;
 
 const showPiccoloScenario = ref(false);
-
-const togglePiccoloScenario = () => {
-  showPiccoloScenario.value = !showPiccoloScenario.value;
-};
-
-const handleCloseScenario = () => {
-  showPiccoloScenario.value = false;
-  reloadPage();
-};
-
-// Function to reload the page and fetch updated data
-const reloadPage = () => {
-  initialiationMethod(); // Fetch data from localStorage
-};
+const selectedCardId = ref(null);
+const animationCardId = ref(null);
+const arrowVisible = ref(false);
+const deleteIconVisible = ref(false);
+const longPressedCard = ref(null);
+const longPressTimer = ref(null);
+const deleteIconVisibleCards = ref([]);
+const selectedCardName = ref(null);
 
 
+  
+  const togglePiccoloScenario = () => {
+    showPiccoloScenario.value=true
+  };
+  
+  const handleCloseScenario = () => {
+    showPiccoloScenario.value = false;
+    reloadPage();
+  };
+  
+  const reloadPage = () => {
+    initialiationMethod(); 
+  };
 let cards = ref([
   {
     id: 1,
-    name:  'High-performance for BMS',
-    isDefault: true, // Mark as default
+    name: 'High-performance for BMS',
+    isDefault: true,
+    conditionsvalue: "30",
+    targetsname: 'performance',
+    conditionsexpress: 'ge',
+    operandsname: "battery_capacity",
     components: [
-      { system: "soc0", containers: [] },
-      { system: "soc1", containers: [ "mavd",  "blis"] },
-      { system: "zc front", containers: ["rdv","frism"] },
-      { system: "zc rear", containers: [] },
+      { system: "HPC", containers: ["frism", "blis", "mavd"] },
+      { system: "ZONE", containers: ["rdv"] },
     ],
   },
   {
     id: 2,
-    name:'Eco mode ON for BMS',
-    isDefault: true, // Mark as default
+    name: 'Eco mode ON for BMS',
+    isDefault: true,
+    conditionsvalue: "30",
+    conditionsexpress: 'lt',
+    targetsname: "ecu",
+    operandsname: "battery_capacity",
     components: [
-      { system: "soc0", containers: ["blis"] },
-      { system: "soc1", containers: [] },
-      { system: "zc front", containers: ["frism"] },
-      { system: "zc rear", containers: [] },
+      { system: "HPC", containers: ["mavd"] },
+      { system: "ZONE", containers: ["frism", "blis", "rdv"] },
     ],
   },
 ]);
+
+let animationTimer = null;
+let autoSelectTimer = null;
+let currentAutoIndex = 0;
 
 const getImageForCard = (cardName) => {
   const images = {
     'High-performance for BMS': carDriving,
     'Eco mode ON for BMS': carParking,
     'Charging for BMS': carCharging,
-    // lowbattery: carLowbattery,
   };
   return images[cardName] || null;
 };
 
-onMounted(() => {
-  initialiationMethod();
-  startAutoSelection(); 
-});
-
+// -------------------- Initialization -------------------- //
 const initialiationMethod = () => {
   let localStorageCards = localStorage.getItem("cards");
+  resetAutoSelection(); 
   if (localStorageCards) {
     cards.value = JSON.parse(localStorageCards);
   } else {
     localStorage.setItem("cards", JSON.stringify(cards.value));
-
-    // localStorageCards = localStorage.setItem(
-    //   "cards",
-    //   JSON.stringify(cards.value)
-    // );
-    // if (localStorageCards) {
-    //   cards.value = JSON.parse(localStorageCards);
-    // }
   }
+  resetAutoSelection(); // Reset auto selection when cards are loaded
 };
 
-const selectedCardId = ref(null);
-
-// Reactive state to track the card currently showing the animation
-const animationCardId = ref(null);
-
-// Timer reference to control the animation timeout
-let animationTimer = null;
-
-// Function to check if a card is selected
-const isSelected = (card) => selectedCardId.value === card.id;
-
-
-
-// Function to select a card (single click)
-const selectCard = (card) => {
-  // If the same card is clicked again, restart the animation
+// -------------------- Selection Logic -------------------- //
+const selectCard = async (card) => {
   if (selectedCardId.value === card.id) {
     resetAnimation(card.id);
     return;
   }
-
-  // Set the selected card ID
+  
   selectedCardId.value = card.id;
-  console.log("Selected Card ID:", selectedCardId.value);
-  // Start the SVG animation
-  startAnimation(card.id);
-   // Reset the automatic selection timer
-   resetAutoSelection();
+  arrowVisible.value = true; 
+  deleteIconVisible.value = false; 
 
-   // Prepare data in YAML format
-   
-   const data = {
-    id: card.id,
-    name: card.name,
-    components: card.components,
+  setTimeout(() => {
+    deleteIconVisible.value = true;
+  }, 2000);
+
+  startAnimation(card.id);
+  resetAutoSelection();
+  
+  // Prepare data in YAML format
+  const scenarioData = {
+    apiVersion: "v1",
+    kind: "Scenario",
+    metadata: { name: "bms" },
+    spec: {
+      conditions: {
+        express: card.conditionsexpress,
+        value: card.conditionsvalue, 
+        operands: { type: "DDS", name: card.operandsname, value: `rt/piccolo/${card.operandsname}` },
+      },
+      chargingStatus: card.chargingStatus,
+      actions: [{ operation: "update" }],
+      targets: [{ name: `bms-algorithm-${card.targetsname}` }],
+    },
   };
 
-  const yamlData = yaml.dump(data);
-  // Send POST request with YAML data
-  axios
-    .post(API_URL , yamlData, {
-      headers: {
-        "Content-Type": "application/x-yaml",
-      },
-    })
-    .then((response) => {
-      console.log("Data sent successfully:", response.data);
-    })
-    .catch((error) => {
-      console.error("Error sending data:", error);
+  const yamlData = yaml.dump(scenarioData);
+  try {
+    const response = await axios.post(API_URL, yamlData, {
+      headers: { "Content-Type": "application/x-yaml" },
     });
- 
+    console.log("Data sent successfully:", response.data);
+  } catch (error) {
+    console.error("Error sending data:", error);
+  }
 };
 
-
-// Function to deselect a card (double click)
 const deselectCard = (cardId) => {
   if (selectedCardId.value === cardId) {
     selectedCardId.value = null;
     animationCardId.value = null;
     clearAnimationTimer();
-    console.log("Deselected Card ID:", cardId);
   }
 };
 
-
-// Function to start the animation
+// -------------------- Animation Logic -------------------- //
 const startAnimation = (cardId) => {
-  // Clear any existing animation timer
   clearAnimationTimer();
-  // Set the animationCardId to the selected card
   animationCardId.value = cardId;
-  // Start a new timer to hide the animation after 3 seconds
   animationTimer = setTimeout(() => {
     animationCardId.value = null;
     animationTimer = null;
   }, 3000);
 };
 
-
-// Function to reset the animation (optional)
 const resetAnimation = (cardId) => {
-  // Clear existing timer
   clearAnimationTimer();
-  // Restart the animation
+
   startAnimation(cardId);
 };
 
-
-// Function to clear the animation timer
 const clearAnimationTimer = () => {
   if (animationTimer) {
     clearTimeout(animationTimer);
@@ -517,89 +303,53 @@ const clearAnimationTimer = () => {
   }
 };
 
-onBeforeUnmount(() => {
-  clearAnimationTimer();
-  clearAutoSelection(); // Clear the automatic selection timer
-});
+// -------------------- Long Press Logic -------------------- //
+const longPressDuration = 500; // milliseconds
+const deleteIconVisibleDuration = 5000; // 5 seconds
 
-const selectedCardName = ref(null);
-
-watch(selectedCardId, (newId) => {
-  const selectedCard = cards.value.find((card) => card.id === newId);
-  selectedCardName.value = selectedCard ? selectedCard.name : null;
-});
-
-
-const deleteCard = (card) => {
-  // Remove the card from the cards array
-  // cards.value = cards.value.filter((c) => c.id !== card.id);
-
-  // // Update localStorage
-  // localStorage.setItem("cards", JSON.stringify(cards.value));
-  // // Reset selected card if it was the one deleted
-  // if (selectedCardId.value === card.id) {
-  //   selectedCardId.value = null;
-  //   animationCardId.value = null;
-  //   clearAnimationTimer();
-  // }
-  // console.log("Deleted card:", card.id);
-
-  if (card.isDefault) {
-      // Prevent deletion of default cards
-      alert("This card cannot be deleted.");
-      return;
+const startLongPress = (card) => {
+  if (longPressTimer.value) clearTimeout(longPressTimer.value);
+  longPressTimer.value = setTimeout(() => {
+    longPressedCard.value = card;
+    if (!deleteIconVisibleCards.value.includes(card.id)) {
+      deleteIconVisibleCards.value.push(card.id);
+      setTimeout(() => {
+        deleteIconVisibleCards.value = deleteIconVisibleCards.value.filter(id => id !== card.id);
+      }, deleteIconVisibleDuration);
     }
-  
-    // Remove the card from the cards array
-    cards.value = cards.value.filter((c) => c.id !== card.id);
-  
-    // Update localStorage
-    localStorage.setItem("cards", JSON.stringify(cards.value));
-  
-    console.log("Deleted card:", card.id);
-  
-    // If the deleted card was selected, deselect it
-    if (selectedCardId.value === card.id) {
-      selectedCardId.value = null;
-      animationCardId.value = null;
-      clearAnimationTimer();
-    }
+  }, longPressDuration);
 };
 
-// -------------------- Automatic Selection Logic -------------------- //
+const endLongPress = () => {
+  if (longPressTimer.value) {
+    clearTimeout(longPressTimer.value);
+    longPressTimer.value = null;
+  }
+  longPressedCard.value = null;
+};
 
-// Reference to store the interval timer for automatic selection
-let autoSelectTimer = null;
-
-// Current index for automatic selection
-let currentAutoIndex = 0;
-
-// Function to start automatic selection
+// -------------------- Auto Selection Logic -------------------- //
 const startAutoSelection = () => {
-  if (autoSelectTimer) return; // Prevent multiple intervals
+  if (autoSelectTimer) return;
 
   autoSelectTimer = setInterval(() => {
     if (cards.value.length === 0) return;
 
-    // Select the next card in sequence
     const card = cards.value[currentAutoIndex];
     if (card) {
       selectCard(card);
-      console.log(`Automatically selected card ID: ${card.id}`);
     }
 
-    // Update the index for next selection
     currentAutoIndex = (currentAutoIndex + 1) % cards.value.length;
-  }, 30000); // 30000 milliseconds = 30 seconds
+  }, 3000); // 3000 milliseconds = 3 seconds
 };
 
-// Function to reset the automatic selection timer
 const resetAutoSelection = () => {
   clearAutoSelection();
+  currentAutoIndex = 0; 
   startAutoSelection();
 };
 
-// Function to clear the automatic selection timer
 const clearAutoSelection = () => {
   if (autoSelectTimer) {
     clearInterval(autoSelectTimer);
@@ -607,12 +357,129 @@ const clearAutoSelection = () => {
   }
 };
 
-// Optionally, you can start the automatic selection immediately
-// startAutoSelection();
+// -------------------- Watchers -------------------- //
+watch(selectedCardId, (newId) => {
+  const selectedCard = cards.value.find((card) => card.id === newId);
+  selectedCardName.value = selectedCard ? selectedCard.name : null;
+});
+
+// -------------------- Lifecycle Hooks -------------------- //
+onMounted(() => {
+
+  initialiationMethod();
+  startAutoSelection(); 
+});
+
+onBeforeUnmount(() => {
+  clearAnimationTimer();
+  clearAutoSelection();
+  if (longPressTimer.value) clearTimeout(longPressTimer.value);
+});
+
+// -------------------- Card Management -------------------- //
+const deleteCard = (card) => {
+  if (card.isDefault) {
+    alert("This card cannot be deleted.");
+    return;
+  }
+
+  cards.value = cards.value.filter((c) => c.id !== card.id);
+  localStorage.setItem("cards", JSON.stringify(cards.value));
+
+  if (currentAutoIndex >= cards.value.length) {
+    currentAutoIndex = 0; // Reset to 0 if we've deleted the last card
+  }
+
+  if (selectedCardId.value === card.id) {
+    selectedCardId.value = null;
+    animationCardId.value = null;
+    clearAnimationTimer();
+  }
+
+  deleteIconVisibleCards.value = deleteIconVisibleCards.value.filter(id => id !== card.id);
+};
+
+// const addCard = (newCard) => {
+//   cards.value.push(newCard);
+//   localStorage.setItem("cards", JSON.stringify(cards.value));
+  
+//   // Automatically select the newly added card after 5 seconds
+//   setTimeout(() => {
+//     selectCard(newCard); // Select the new card
+//   }, 1000); // 5000 milliseconds = 5 seconds
+  
+//   // Reset auto selection when a new card is added
+//   resetAutoSelection(); 
+// };
+
 </script>
 
 
 <style scoped>
+.arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: moveArrow 2s infinite ease-in-out; /* Arrow animation */
+}
+
+.delete-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: 1s ease-in-out infinite; /* Delete icon animation */
+}
+
+@keyframes moveArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0px); /* Move the arrow to the right */
+  }
+  100% {
+    transform: translateX(0); /* Return to the original position */
+  }
+}
+
+@keyframes delete-arrow {
+  0%, 100% {
+    transform: rotate(180deg);
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: rotate(180deg);
+    transform: translate(10px, 0);
+  }
+}
+
+
+
+.arrow {
+  animation: moveArrow 2s infinite ease-in-out; /* Loop the animation */
+}
+
+.arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Center the arrow vertically */
+}
+
+@keyframes moveArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px); /* Move the arrow to the right */
+  }
+  100% {
+    transform: translateX(0); /* Return to the original position */
+  }
+}
+
+
+
 .deletearrow {
   animation: delete-arrow 1s ease-in-out infinite;
 }
@@ -630,7 +497,7 @@ const clearAutoSelection = () => {
 }
 
 .v-icon {
-  font-size: 25px;
+  font-size: 36px;
 }
 
 .arrow-animation {
